@@ -2,10 +2,15 @@ import * as React from 'react';
 import Avatar from '@material-ui/core/Avatar';
 import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography'
+import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import withStyles from '@material-ui/core/styles/withStyles';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 import AirplaneIcon from '@material-ui/icons/AirplanemodeActiveSharp';
 
@@ -29,7 +34,8 @@ const ListItemHeadings = withStyles({
     },
     secondary:{
         fontSize: "14px",
-        color: 'gray'
+        color: 'gray',        
+        
     }
 })(ListItemText)
 
@@ -45,10 +51,13 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
 
         this.fetchCostByTrip(this.props.tripIDSelected);
         this.fetchCostByTrip = this.fetchCostByTrip.bind(this);
+
         this.fetchSpendingList(this.props.tripIDSelected);
         this.fetchSpendingList = this.fetchSpendingList.bind(this);
+
         this.actionOnList = this.actionOnList.bind(this);
-        
+
+        this.deleteItem = this.deleteItem.bind(this);
     }
 
     public render() {
@@ -82,11 +91,19 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
             const children = []
             const thisItem = spendingList[i];
             children.push(
-                <div key={thisItem.id}>
-                    <Avatar>
-                        <AirplaneIcon/>
-                    </Avatar>
+                <div>
+                    <ListItemAvatar>
+                        <Avatar>
+                            {this.labelDetermine(thisItem.category)}
+                        </Avatar> 
+                    </ListItemAvatar>
                     <ListItemHeadings primary={thisItem.heading} secondary={thisItem.category}/>
+                    
+                    <ListItemSecondaryAction>
+                      <IconButton aria-label="Delete" onClick={this.deleteItem.bind(this,thisItem.id)}>
+                        <DeleteIcon />
+                      </IconButton>
+                    </ListItemSecondaryAction>
                 </div>
             )
             list.push(<div><Divider/><ListItem onClick={this.actionOnList.bind(this,thisItem.id)}> {children} </ListItem></div>)   
@@ -95,9 +112,73 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
         
     }
 
-    
+    private labelDetermine(category: any){
+        const children = []
+        switch(category) { 
+            case "accomodation": { 
+               children.push(<div><AirplaneIcon/></div>)
+               return children;
+            } 
+            case "attractionfee": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            } 
+            case "flight": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            } 
+            case "food": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            }
+            case "grocery": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            }
+            case "localtransport": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            }
+            case "phonedata": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            } 
+            case "shopping": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            }
+            case "souvenir": { 
+                children.push(<div><AirplaneIcon/></div>)
+                return children;
+            }
+            default: { 
+               children.push(<div></div>)
+               return children;
+               break; 
+               
+            } 
+         } 
+    }
+
     private actionOnList(id: any){
         console.log("holley, you clicked a list" + id);
+    }
+
+    private deleteItem(id: any){
+        let url = "https://spendingtracker.azurewebsites.net/api/Spending/" + id
+
+        fetch(url, {
+			method: 'DELETE'
+		})
+        .then((response : any) => {
+			if (!response.ok) {
+				// Error Response
+				alert(response.statusText)
+			}
+			else {
+              location.reload()
+			}
+		  })
     }
 
     private fetchCostByTrip(id: any){

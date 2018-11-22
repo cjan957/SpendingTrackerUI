@@ -19,8 +19,8 @@ export default class WelcomeBar extends React.Component<{}, IPlaceHolder> {
 
     public render() {
         return (
-            <div className="topbar">
-                <h1>Hello, {this.state.owner}! </h1>
+            <div className="container">
+                <img src="/images/logo_transparent.png" className="img-rounded" alt="logo"></img>
             </div>
         );
     }

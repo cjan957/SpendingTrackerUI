@@ -5,6 +5,9 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText'; 
 import WithStyles from '@material-ui/core/styles/withStyles';
 
+interface IProp{
+    selectTrip: any
+}
 
 const ListItemHeadings = WithStyles({
     primary:{
@@ -16,7 +19,7 @@ const ListItemHeadings = WithStyles({
     }
 })(ListItemText)
 
-export default class TripList extends React.Component<{}> {
+export default class TripList extends React.Component<IProp, {}> {
 
     constructor(props: any) {
         super(props);
@@ -25,8 +28,11 @@ export default class TripList extends React.Component<{}> {
             items: []
         };
 
-        // this.addItem = this.addItem.bind(this);
+        this.chooseFromListOne = this.chooseFromListOne.bind(this);
+        this.chooseFromListTwo = this.chooseFromListTwo.bind(this);
+
     }
+
 
     // private addItem(event: any){
     //     if()
@@ -34,15 +40,28 @@ export default class TripList extends React.Component<{}> {
 
     public render() {
         return (
-           <List>
-               <ListItem>
-                   <ListItemHeadings primary="Australia" secondary="test"/>
-               </ListItem>
-               <Divider/>
-               <ListItem>
-               <ListItemHeadings primary="Thailand" secondary="te2st"/>
-               </ListItem>
-           </List>
+            <div>
+                <List>
+                    <ListItem>
+                        <ListItemHeadings primary="Australia" onClick={this.chooseFromListOne} secondary="15 November 2018 - 19 November 2018 "/>
+                    </ListItem>
+                    <Divider/>
+                    <ListItem>
+                        <ListItemHeadings primary="Thailand" onClick={this.chooseFromListTwo} secondary="6 July 2018 - 22 July 2018"/>
+                    </ListItem>
+                </List>
+            </div>
+            
         );
     }
+
+    private chooseFromListOne(){
+        this.props.selectTrip("1")  
+    }
+
+    private chooseFromListTwo(){
+        this.props.selectTrip("2")  
+    }
+
+
 }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import './app.css';
+import './newAppStyle.css';
 import WelcomeBar from './WelcomeBar';
 import TripList from './TripList';
 import SpendingContainer from './SpendingContainer';
@@ -31,24 +31,31 @@ class App extends React.Component<{}, IState> {
 
     public render(){
         return( 
-                <div>
-                    <div className="split left">
-                        <div className="welcomeBar">
-                            <WelcomeBar/>
+            <div>
+                <div className="container-fluid">
+                    <div className="row content">
+                        <div className="col-sm-3 sidenav">
+                            <div className="welcomeBar">
+                                <WelcomeBar/>
+                            </div>
+                            <div className="tripList">
+                                <TripList/>
+                            </div>
                         </div>
-                        <div className="tripList">
-                            <TripList/>
-                        </div>
-                    </div>
-                    <div className="split right">
-                        <div className="centered">
-                            <SpendingContainer tripTitleSelected={this.state.tripTitleSelected} 
-                                budgetTripSelected={this.state.budgetTripSelected}
-                                tripIDSelected={this.state.tripIDSelected}
-                                currencyTripSelected={this.state.currencyTripSelected} />
+                        <div className="col-sm-9">
+                            <div className="centered">
+                                <SpendingContainer tripTitleSelected={this.state.tripTitleSelected} 
+                                    budgetTripSelected={this.state.budgetTripSelected}
+                                    tripIDSelected={this.state.tripIDSelected}
+                                    currencyTripSelected={this.state.currencyTripSelected} />
+                            </div>
                         </div>
                     </div>
                 </div>
+                <footer className="container-fluid">
+                    <p>SpendingTracker - MSA 2018</p>
+                </footer>
+            </div>
         )
     }  
 }

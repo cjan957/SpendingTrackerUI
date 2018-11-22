@@ -6,15 +6,14 @@ import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import withStyles from '@material-ui/core/styles/withStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
 import AirplaneIcon from '@material-ui/icons/AirplanemodeActiveSharp';
-// import * as Webcam from 'react-webcam';
-import './app.css';
+import './newAppStyle.css';
 
+// import * as Webcam from 'react-webcam';
 
 interface IProps {
     tripTitleSelected: any,
@@ -93,8 +92,16 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                     </Typography>
                 </div>
                 <div className="budgetBox">
-                    <Typography variant="h4" gutterBottom>{this.props.currencyTripSelected}$ {this.state.amountSpent}</Typography><Typography variant="body1" gutterBottom>/{this.props.budgetTripSelected}</Typography>
-                    <button type="button" onClick={this.onOpenModal}>Add an item!</button>
+                    <table>
+                        <tr>
+                            <td>
+                                <Typography variant="h4" >{this.props.currencyTripSelected}$ {this.state.amountSpent}</Typography>
+                            </td>
+                            <td>
+                                <button type="button" className="btn btn-outline-primary" onClick={this.onOpenModal}>+ Add Item</button>
+                            </td>
+                        </tr>
+                    </table>
                 </div>
                 <div className="spendingList">
                     <List>
@@ -128,14 +135,15 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
 
                             <label>Note</label>
                             <input type="text" id="note-input" />
-                            <button type="button" onClick={this.pushItem}>Save</button>
+                            <button type="button" className="btn btn-primary" onClick={this.pushItem}>Save</button>
                         </div>
                     </form>
                 </Modal>
 
 
                 <Modal open={this.state.openEditItemModal} onClose={this.onCloseEditModal}>
-                    <p id="requiredField" hidden>Please enter all the fields again and then click Save. Currency and Category are locked and cannot be changed</p>
+                    <p id="requiredField" hidden>Please enter all the fields again and then click Save. 
+                    Currency and Category are locked and cannot be changed (but you can delete the entire entry instead).</p>
                     <form>
                         <div className="formContainer">
                             <label>Item name</label> 
@@ -162,8 +170,12 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
 
                             <label>Note</label>
                             <input type="text" placeholder={this.state.selectedItem.note} id="note-input-edit" disabled />
-                            <button type="button" onClick={this.enableEditing}>Edit</button>
-                            <button type="button" id="edit_save_button" onClick={this.UpdateItem}>Save</button>
+                            <table>
+                                <tr>
+                                    <td><button type="button" className="btn btn-warning"onClick={this.enableEditing}>Edit</button></td>
+                                    <td><button type="button" className="btn btn-primary" id="edit_save_button" onClick={this.UpdateItem}>Save</button></td>
+                                </tr>
+                            </table>
                         </div>
                     </form>
                 </Modal>
@@ -188,7 +200,6 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
         note.disabled = false;
     }
 
-    // Modal close
     private onCloseModal = () => {
         this.setState({ openAddItemModal: false });
     };
@@ -208,13 +219,10 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
             const thisItem = spendingList[i];
             children.push(
                 <div>
-                    <ListItemAvatar >
-                        <Avatar onClick={this.actionOnList.bind(this, thisItem.id)} >
-                            {this.labelDetermine(thisItem.category)}
-                        </Avatar>
-                    </ListItemAvatar>
+                    <Avatar onClick={this.actionOnList.bind(this, thisItem.id)} >
+                        {this.labelDetermine(thisItem.category)}
+                    </Avatar>
                     <ListItemHeadings primary={thisItem.heading} secondary={thisItem.category + " " + this.props.currencyTripSelected + "$ " + thisItem.cost} />
-
                     <ListItemSecondaryAction>
                         <IconButton aria-label="Delete" onClick={this.deleteItem.bind(this, thisItem.id)}>
                             <DeleteIcon />
@@ -224,7 +232,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
             )
             list.push(<div><ListItem> {children} </ListItem><Divider /></div>)
         }
-        return list;
+        return list.reverse();
 
     }
 
@@ -232,39 +240,39 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
         const children = []
         switch (category) {
             case "accomodation": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "attractionfee": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "flight": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "food": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "grocery": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "localtransport": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "phonedata": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "shopping": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             case "souvenir": {
-                children.push(<div><AirplaneIcon /></div>)
+                children.push(<AirplaneIcon />)
                 return children;
             }
             default: {

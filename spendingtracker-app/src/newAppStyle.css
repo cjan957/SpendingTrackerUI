@@ -1,0 +1,46 @@
+.row.content {height: 1000px}
+    
+.sidenav {
+  background-color: #f1f1f1;
+  height: 100%;
+}
+
+footer {
+  background-color: #555;
+  color: white;
+  padding: 15px;
+}
+
+@media screen and (max-width: 767px) {
+  .sidenav {
+    height: auto;
+    padding: 15px;
+  }
+  .row.content {height: auto;} 
+}
+
+/* Form CSS */
+input[type=text], input[type=number], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
+}
+
+td{
+  padding: 10px;
+}
+
+.budgetBox{
+  padding-top: 15px;
+  padding-left: 10px;
+}
+
+.tripHeading{
+  padding-top: 40px;
+  padding-left: 15px;
+}

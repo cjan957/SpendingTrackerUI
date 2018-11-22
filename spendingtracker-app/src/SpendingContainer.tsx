@@ -9,7 +9,18 @@ import ListItemSecondaryAction from '@material-ui/core/ListItemSecondaryAction';
 import ListItemText from '@material-ui/core/ListItemText';
 import withStyles from '@material-ui/core/styles/withStyles';
 import DeleteIcon from '@material-ui/icons/Delete';
+
 import AirplaneIcon from '@material-ui/icons/AirplanemodeActiveSharp';
+import LocalHotelOutlined from '@material-ui/icons/LocalHotelOutlined';
+import LocalPlayOutlined from '@material-ui/icons/LocalPlayOutlined';
+import FastFoodOutlined from '@material-ui/icons/FastfoodOutlined';
+import LocalGroceryStoreOutlined from '@material-ui/icons/LocalGroceryStoreOutlined';
+import LocalTaxiOutlined from '@material-ui/icons/LocalTaxiOutlined';
+import SpeakerPhoneOutlined from '@material-ui/icons/SpeakerPhoneOutlined';
+import LocalMallOutlined from '@material-ui/icons/LocalMallOutlined';
+import CardGiftcardOutlined from '@material-ui/icons/CardGiftcardOutlined';
+
+
 import './newAppStyle.css';
 
 // import * as Webcam from 'react-webcam';
@@ -407,43 +418,43 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
         const children = []
         switch (category) {
             case "accomodation": {
-                children.push(<AirplaneIcon />)
+                children.push(<LocalHotelOutlined />) //local_hotel
                 return children;
             }
             case "attractionfee": {
-                children.push(<AirplaneIcon />)
+                children.push(<LocalPlayOutlined />) //local_play
                 return children;
             }
             case "flight": {
-                children.push(<AirplaneIcon />)
+                children.push(<AirplaneIcon />) //airplane icon
                 return children;
             }
             case "food": {
-                children.push(<AirplaneIcon />)
+                children.push(< FastFoodOutlined/>) //fastfood
                 return children;
             }
             case "grocery": {
-                children.push(<AirplaneIcon />)
+                children.push(<LocalGroceryStoreOutlined />) // local_grocery
                 return children;
             }
             case "localtransport": {
-                children.push(<AirplaneIcon />)
+                children.push(<LocalTaxiOutlined />) //local_taxi
                 return children;
             }
             case "phonedata": {
-                children.push(<AirplaneIcon />)
+                children.push(<SpeakerPhoneOutlined />) // Speaker_Phone
                 return children;
             }
             case "shopping": {
-                children.push(<AirplaneIcon />)
+                children.push(<LocalMallOutlined />) // local mall
                 return children;
             }
             case "souvenir": {
-                children.push(<AirplaneIcon />)
+                children.push(<CardGiftcardOutlined />) // card_giftcard
                 return children;
             }
             default: {
-                children.push(<div></div>)
+                children.push(<div></div>) //trip_origin
                 return children;
                 break;
 

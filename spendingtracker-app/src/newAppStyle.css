@@ -6,7 +6,7 @@
   background-size: cover;
 } */
 
-.row.content {height: 1000px}
+.row.content {height: 900px}
     
 .sidenav {
   background-color: #f1f1f1;
@@ -47,7 +47,7 @@ td{
 }
 
 #nothingLabel{
-  color: rgb(185,10,10);
+  color: rgb(92,103,111);
   text-align: center;
 }
 

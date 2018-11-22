@@ -8,6 +8,10 @@
     font-family: sans-serif;
 }
 
+.requiredField{
+    text-align: center;
+}
+
 body {
     font-family: Arial;
     color: black;

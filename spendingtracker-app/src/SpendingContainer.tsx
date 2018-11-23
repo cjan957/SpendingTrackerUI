@@ -19,8 +19,7 @@ import LocalTaxiOutlined from '@material-ui/icons/LocalTaxiOutlined';
 import SpeakerPhoneOutlined from '@material-ui/icons/SpeakerPhoneOutlined';
 import LocalMallOutlined from '@material-ui/icons/LocalMallOutlined';
 import CardGiftcardOutlined from '@material-ui/icons/CardGiftcardOutlined';
-
-
+import TripOriginOutlined from '@material-ui/icons/TripOriginOutlined';
 import './newAppStyle.css';
 
 // import * as Webcam from 'react-webcam';
@@ -143,6 +142,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                                 <option value="phonedata">Phone/Data</option>
                                 <option value="shopping">Shopping</option>
                                 <option value="souvenir">Souvenir</option>
+                                <option value="other">Other</option>
                             </select>
 
                             <label>Note</label>
@@ -177,6 +177,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                                 <option value="phonedata">Phone/Data</option>
                                 <option value="shopping">Shopping</option>
                                 <option value="souvenir">Souvenir</option>
+                                <option value="other">Other</option>
                             </select>
 
                             <label>Note</label>
@@ -453,8 +454,12 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                 children.push(<CardGiftcardOutlined />) // card_giftcard
                 return children;
             }
+            case "other": {
+                children.push(<TripOriginOutlined />) // card_giftcard
+                return children;
+            }
             default: {
-                children.push(<div></div>) //trip_origin
+                children.push(<TripOriginOutlined />) //trip_origin
                 return children;
                 break;
 

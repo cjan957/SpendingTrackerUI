@@ -30,7 +30,7 @@ class App extends React.Component<{}, IState> {
             tripList: [],
 
             //authentication
-            authenticated: true,
+            authenticated: false,
             refCamera: React.createRef(),
             predictionResult: 0
    
@@ -45,12 +45,13 @@ class App extends React.Component<{}, IState> {
             <div>
                 {(!authenticated) ?
                     <Modal open={!authenticated} onClose={this.authenticate} closeOnOverlayClick={false} showCloseIcon={false} center={true}>
+                            <h3 id="authenticateMessage">Authentication</h3>
                             <Webcam
                                 audio={false}
                                 screenshotFormat="image/jpeg"
                                 ref={this.state.refCamera}
                             />
-                            <div className="row nav-row">
+                            <div id="loginButton" className="row nav-row">
                                 <div className="btn btn-primary bottom-button" onClick={this.authenticate}>Login</div>
                             </div>
                         </Modal> 

@@ -85,6 +85,16 @@ img{
   height: inherit;
 }
 
+#authenticateMessage{
+  text-align: center;
+}
+
+#loginButton{
+  align-items: center;
+  align-content: center;
+  align-self: center;
+}
+
 /* 
 .spendingList{
   padding-top: 15px;

@@ -123,13 +123,13 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                     <form >
                         <div className="formContainer">
                             <label>Item name</label>
-                            <input type="text" id="item-input" required autoFocus/>
+                            <input type="text" id="item-input" required autoFocus autoComplete="off"/>
 
                             <label>Currency</label>
                             <input type="text" id="currency-input-fixed" value={this.props.currencyTripSelected} readOnly />
 
                             <label>Price</label>
-                            <input type="number" step=".01" id="price-input" placeholder="" required />
+                            <input type="number" step=".01" id="price-input" placeholder="" required autoComplete="off" />
 
                             <label>Category</label>
                             <select id="category-input" required>
@@ -146,7 +146,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                             </select>
 
                             <label>Note</label>
-                            <input type="text" id="note-input" />
+                            <input type="text" id="note-input" autoComplete="off"/>
                             <button type="button" className="btn btn-dark" onClick={this.pushItem}>Save</button>
                         </div>
                     </form>
@@ -158,13 +158,13 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                     <form>
                         <div className="formContainer">
                             <label>Item name</label> 
-                            <input type="text" placeholder={this.state.selectedItem.heading} id="item-input-edit" required disabled />
+                            <input type="text" placeholder={this.state.selectedItem.heading} id="item-input-edit" required autoComplete="off" disabled />
 
                             <label>Currency</label>
-                            <input type="text" value={this.state.selectedItem.currency} id="currency-input-edit" readOnly disabled />
+                            <input type="text" value={this.state.selectedItem.currency} id="currency-input-edit" readOnly autoComplete="off" disabled />
 
                             <label>Price</label>
-                            <input type="number" placeholder={this.state.selectedItem.cost} step=".01" id="price-input-edit" disabled required />
+                            <input type="number" placeholder={this.state.selectedItem.cost} step=".01" id="price-input-edit" disabled autoComplete="off" required />
 
                             <label>Category</label>
                             <select id="category-input-edit" value={this.state.selectedItem.category} required disabled>
@@ -181,7 +181,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
                             </select>
 
                             <label>Note</label>
-                            <input type="text" placeholder={this.state.selectedItem.note} id="note-input-edit" disabled />
+                            <input type="text" placeholder={this.state.selectedItem.note} id="note-input-edit" autoComplete="off" disabled  />
                             <table>
                                 <tr>
                                     <td><button type="button" className="btn btn-secondary"onClick={this.enableEditing}>Edit</button></td>

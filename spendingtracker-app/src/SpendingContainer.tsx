@@ -197,7 +197,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
 
     private async pushItem() {
 
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending"
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending"
         console.log("inPushItem")
         const itemTitle = document.getElementById("item-input") as HTMLInputElement //required
         const currency = document.getElementById("currency-input-fixed") as HTMLInputElement //required
@@ -243,7 +243,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
 
     private deleteItem(id: any) {
 
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending/" + id
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending/" + id
 
         fetch(url, {
             method: 'DELETE'
@@ -263,7 +263,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
     }
 
     private fetchCostByTrip(id: any) {
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending/costbytrip"
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending/costbytrip"
         if (id !== "") {
             url += "/" + id;
         }
@@ -287,7 +287,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
     }
 
     private fetchSpendingList(id: any) {
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending/spendinglistbytrip"
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending/spendinglistbytrip"
         if (id !== "") {
             url += "/" + id;
         }
@@ -316,7 +316,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
     }
 
     private GetSpecificItem(id: any) {
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending"
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending"
         if (id !== "") {
             url += "/" + id;
         }
@@ -363,7 +363,7 @@ export default class SpendingList extends React.Component<IProps, IState, {}> {
         const currency_v = currency.value;
         const note_v = note.value !== "" ? note.value : "";
 
-        let url = "https://spendingtracker.azurewebsites.net/api/Spending/" + ID_V;
+        let url = "https://spendingtrackerapi.azurewebsites.net/api/Spending/" + ID_V;
 
         fetch(url, {
             body: JSON.stringify({

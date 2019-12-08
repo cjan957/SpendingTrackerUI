@@ -3,6 +3,7 @@
 **SpendingTracker** helps you keep track of your spending while on a trip. It's a really simple app that uses RESTful API [endpoint I created](https://github.com/cjan957/SpendingTracker) using .NET Core Web API. Released through Azure DevOps Pipeline and hosted as a WebApp on Azure. SpendingTracker is my second React web application. 
 <br>
 <br>
+![SpendingTracker](./spendingtracker.gif "Spending Tracker")
 See it [here](https://spendingtrackui.azurewebsites.net)
 <br>
 

@@ -4,7 +4,6 @@
 <br>
 <br>
 ![SpendingTracker](./spendingtracker.gif "Spending Tracker")
-See it [here](https://spendingtrackui.azurewebsites.net)
 <br>
 
 ## Features
